@@ -1,0 +1,20 @@
+<h1>Tweets#show</h1>
+<p>Find me in app/views/tweets/show.html.erb</p>
+
+<p><span>email: </span><%= @user.email %></p>
+<p><span>ツイート内容: </span><%= @tweet.body %></p>
+
+<% if user_signed_in? %>
+  <%= form_for [@tweet, @comment] do |f| %>
+    <p>
+      <%= f.label :body, "コメント" %>
+      <%= f.text_field :body %>
+    </p>
+    <%= f.submit %>
+  <% end %>
+<% end %>
+
+<% @comments.each do |comment| %>
+  <hr>
+  <p><span>コメント：</span><%= comment.body %></p>
+<% end %>
